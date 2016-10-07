@@ -45,7 +45,3 @@ function writeJson(){
     });
   }
 }
-
-// var kuis = new Question()
-// kuis.jalankan()
-// console.log(data);

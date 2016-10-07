@@ -8,7 +8,7 @@ import {Game} from './controller.js'
 var kuis = new Question()
 var pertanyaan = new Game()
 
-rl.question(`ingin jadi pembuat pertanyaan atau ikut kuis?<kuis/tanya>`, (input) => {
+rl.question(`ingin jadi pembuat pertanyaan atau ikut kuis?<kuis/tanya>\n  `, (input) => {
 
     if(input.toLowerCase() === "kuis"){
       pertanyaan.driver()
