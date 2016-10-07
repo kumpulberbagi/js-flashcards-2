@@ -1,15 +1,7 @@
 "use strict"
 // write your code here
-var fs =require ('fs')
-var contents = fs.readFileSync("social.json");
-var data = JSON.parse(contents);
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-class Game{
+import {data,rl} from './flashcards.js'
+export class Game{
   constructor(){
     this.data = data
     this.numSoal = 0;
@@ -38,6 +30,3 @@ class Game{
       }
   }
 }
-
-var tanya = new Game()
-tanya.driver()

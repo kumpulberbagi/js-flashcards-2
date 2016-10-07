@@ -1,30 +1,27 @@
 "use strict"
-// write your code here
-var fs =require ('fs')
-var contents = fs.readFileSync("social.json");
-var data = JSON.parse(contents);
 
+export const readline = require('readline');
+import {rl} from './flashcards.js'
+var fs = require('fs');
 
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 
 
 function writeJson(){
-  var write = fs.writeFileSync("data.json", JSON.stringify(data));
+  var contents = fs.writeFileSync("data.json", JSON.stringify(data));
 }
-//
-class Question {
+
+ export class Question {
   constructor(quest) {
     this.quest = quest;
   }
 
   addQuest(quest){
-    var input = data[data.length-1].definition;
-    input = quest;
-    data.push({"definition": input, "term": "asaal"});
+    //console.log(data);
+    data.push({"definition": "", "term": "asaal"});
+    data[data.length-1].definition = quest;
+
+
     writeJson()
   }
 
@@ -48,6 +45,7 @@ class Question {
     });
   }
 }
-var test = new Question();
 
-test.jalankan()
+// var kuis = new Question()
+// kuis.jalankan()
+// console.log(data);
