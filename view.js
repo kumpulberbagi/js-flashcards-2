@@ -1,2 +1,9 @@
 "use strict"
-// write your code here
+
+export class Interface {
+  static display_welcome(){
+  console.log('============================');
+  console.log('========FLASHCARD===========');
+  console.log('============================');
+}
+}
