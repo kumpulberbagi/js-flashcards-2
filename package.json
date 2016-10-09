@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/blanford-fox-2016/js-flashcards-2/issues"
   },
-  "homepage": "https://github.com/blanford-fox-2016/js-flashcards-2#readme"
+  "homepage": "https://github.com/blanford-fox-2016/js-flashcards-2#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0"
+  }
 }

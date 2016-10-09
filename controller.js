@@ -51,4 +51,4 @@ export class FlashcardController {
   }
 
 }
-to './view.js'
+// to './view.js'

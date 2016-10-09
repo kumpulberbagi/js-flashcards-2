@@ -132,7 +132,7 @@ class FlashcardView {
       if (controller.tersulit() === 1) {
         console.log("semua soal tampaknya sudah mudah bagimu");
       } else {
-        console.log(`Soal yang paling sulit untukmu adalah ${controller.yg_tersulit()}`);
+        console.log(`Soal yang paling sulit untukmu adalah ${controller.yg_tersulit().join("\n dan ")}`);
       }
       rl.close();
     }
