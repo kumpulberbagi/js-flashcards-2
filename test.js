@@ -1,6 +1,7 @@
 "use strict"
 const fs = require('fs');
 const readline = require('readline');
+const term = require( 'terminal-kit' ).terminal ;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -82,7 +83,7 @@ class FlashcardController {
         this.max_guess = this.save[i]
       }
     }
-    console.log(this.max_guess)
+    // console.log(this.max_guess)
     return this.max_guess;
   }
   yg_tersulit() {
@@ -108,31 +109,32 @@ class FlashcardView {
     }
   }
   start() {
-    console.log(" ### SELAMAT DATANG DI TAMSYAN FLASHCARD GAME! ### \n");
-    console.log(`Anda menggunakan deck '${model.file}'`);
+    term.green(` ### SELAMAT DATANG DI TAMSYAN FLASHCARD GAME! ### \n Anda menggunakan deck '${model.file}'\n`);
     this.sleep()
   }
   soal() {
     // rl.setPrompt(`${controller.generate_soal()} > `);
     // rl.prompt();
     if (controller.current_soal < controller.getData().length) {
-      rl.question(`${controller.generate_soal()} > `, (answer) => {
+      rl.question(`\n${controller.generate_soal()} > `, (answer) => {
         if (controller.cek_input(answer) == true) {
-          console.log("\nBenar, sekarang coba jawab soal selanjutnya!\n");
-          console.log(`kamu telah menebak ${controller.guess_count()} kali`);
+          term.yellow(`kamu telah menebak ${controller.guess_count()} kali`);
+          term.green("\nBenar, sekarang coba jawab soal selanjutnya!\n");
           controller.save_guess();
           controller.next_question();
           this.soal();
         } else {
+          term.yellow(`kamu telah menebak ${controller.guess_count()} kali\n`);
+          term.red("Sayang nya tebakanmu belum tepat, coba lagi!\n")
           this.soal();
         }
       })
     } else {
       console.log("Oops, ternyata soalnya udah abis. :grin:");
       if (controller.tersulit() === 1) {
-        console.log("semua soal tampaknya sudah mudah bagimu");
+        term.blue("Luar biasa, kamu menjawab semua soal dengan benar dalam sekali tebak!\n");
       } else {
-        console.log(`Soal yang paling sulit untukmu adalah ${controller.yg_tersulit().join("\n dan ")}`);
+        term.red(`\nSoal yang paling sulit untukmu adalah : \n * ${controller.yg_tersulit().join("\n * ")}\n`);
       }
       rl.close();
     }
