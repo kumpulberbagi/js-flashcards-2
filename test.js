@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 class Flashcard {
   constructor(args = {}) {
-    this.file = file || social.json;
+    this.file = file || "social.json";
   }
   getData() {
     let deck = fs.readFileSync(this.file);
@@ -24,6 +24,7 @@ class FlashcardController {
     this.current_soal = 0
     this.guess = 0
     this.save = []
+    this.max_guess = 0
   }
   getData() {
     return model.getData();
@@ -59,8 +60,8 @@ class FlashcardController {
   next_question() {
     this.current_soal += 1
     this.guess = 0
-    this.save_guess()
   }
+
   scoring() {
     let result = 0
     for (let i = 0; i < this.point.length; i++) {
@@ -76,13 +77,13 @@ class FlashcardController {
     return this.save
   }
   tersulit() {
-    let max = 0
     for (var i = 0; i < this.save.length; i++) {
-      if (this.save[i] > max) {
-        max = this.save[i]
+      if (this.save[i] > this.max_guess) {
+        this.max_guess = this.save[i]
       }
     }
-    return max;
+    console.log(this.max_guess)
+    return this.max_guess;
   }
   yg_tersulit() {
     let arrMax = []
@@ -119,6 +120,7 @@ class FlashcardView {
         if (controller.cek_input(answer) == true) {
           console.log("\nBenar, sekarang coba jawab soal selanjutnya!\n");
           console.log(`kamu telah menebak ${controller.guess_count()} kali`);
+          controller.save_guess();
           controller.next_question();
           this.soal();
         } else {
@@ -127,7 +129,11 @@ class FlashcardView {
       })
     } else {
       console.log("Oops, ternyata soalnya udah abis. :grin:");
-      console.log(`Soal yang paling sulit untukmu adalah ${controller.yg_tersulit()}`);
+      if (controller.tersulit() === 1) {
+        console.log("semua soal tampaknya sudah mudah bagimu");
+      } else {
+        console.log(`Soal yang paling sulit untukmu adalah ${controller.yg_tersulit()}`);
+      }
       rl.close();
     }
   }
