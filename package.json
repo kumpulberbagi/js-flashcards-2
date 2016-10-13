@@ -1,11 +1,7 @@
 {
   "name": "js-flashcards-2",
   "version": "1.0.0",
-<<<<<<< Updated upstream
-  "description": "",
-=======
   "description": "js-flashcard 2 by Tama & Syanmil",
->>>>>>> Stashed changes
   "main": "controller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,27 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/blanford-fox-2016/js-flashcards-2.git"
   },
-<<<<<<< Updated upstream
-  "author": "",
-=======
   "keywords": [
     "flashcard"
   ],
   "author": "Septian Adhi Tama, Izharruddin Syanmil",
->>>>>>> Stashed changes
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/blanford-fox-2016/js-flashcards-2/issues"
   },
-<<<<<<< Updated upstream
-  "homepage": "https://github.com/blanford-fox-2016/js-flashcards-2#readme",
-  "devDependencies": {
-    "babel-preset-es2015": "^6.16.0"
-  }
-=======
-<<<<<<< Updated upstream
-  "homepage": "https://github.com/blanford-fox-2016/js-flashcards-2#readme"
-=======
   "homepage": "https://github.com/blanford-fox-2016/js-flashcards-2#readme",
   "devDependencies": {
     "babel-install": "2.1.0",
@@ -46,6 +29,4 @@
     "cli-color": "^1.1.0",
     "terminal-kit": "^0.24.30"
   }
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }
