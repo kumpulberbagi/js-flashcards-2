@@ -18,7 +18,11 @@ var pilihNama = `Silahkan masukan namafile dan sertakan '.json' dibelakangnya.\n
 var source = []
 var pertanyaan =""
 var jawaban =""
-var write, fl
+var write, fl, hard
+var att = 0
+var right = 0
+var wrong = 0
+var mem = []
 
 class Question{
   constructor(property){
@@ -29,15 +33,28 @@ class Question{
 function quiz (){
   if(i>content.length-1){
     console.log(`Quiz selesai !`);
+    console.log(`Answer attemp : ${att}`);
+    console.log(`Attemp true : ${right}`);
+    hard = most(mem)
+    if(wrong>0){
+
+      console.log(`Hardest question : ${content[hard].definition}`);
+    }
+    console.log();
     process.exit[0]
     rl.close()
   }else{
+    mem.push(i)
     rl.question(content[i].definition,function(input){
       if (input.toLowerCase() == content[i].term.toLowerCase()) {
         i++
+        att++
+        right++
         quiz()
       }else{
         console.log(`Jawaban salah`);
+        att++
+        wrong++
         quiz()
       }
     })
@@ -60,7 +77,7 @@ function newDeck(){
             if(input =='lanjut'){
               newDeck()
             }else if(input =='save'){
-              console.log(`WARNING ||| TYPO IN THIS STATE WILL CAUSE YOUR CUSTOM DECK GONE\nPLEASE TYPING WITH CAUTIONS\n`);
+              console.log(`WARNING ||| TYPO IN THIS STATE WILL CAUSE YOUR UNSAVED CUSTOM DECK GONE\nPLEASE TYPING WITH CAUTIONS\n`);
               console.log(`Please press enter to continue`);
               rl.on('line', function(input){
                 rl.setPrompt(pilihNama)
@@ -73,7 +90,7 @@ function newDeck(){
                   process.exit[0]
                   rl.close()
                 }else{
-                  console.log(`TYPO DETECTED. YOUR CUSTOM DECK HAS BEEN DELETED. EXIT QUIZ.`);
+                  console.log(`TYPO DETECTED. YOUR UNSAVED CUSTOM DECK HAS BEEN DELETED. EXIT QUIZ.`);
                   process.exit[0]
                   rl.close()
                 }
@@ -117,6 +134,28 @@ rl.question(welcome, function(input){
     driver()
   }
 })
+}
+
+function most(array)
+{
+    if(array.length == 0)
+    	return null;
+    var modeMap = {};
+    var maxEl = array[0], maxCount = 1;
+    for(var i = 0; i < array.length; i++)
+    {
+    	var el = array[i];
+    	if(modeMap[el] == null)
+    		modeMap[el] = 1;
+    	else
+    		modeMap[el]++;
+    	if(modeMap[el] > maxCount)
+    	{
+    		maxEl = el;
+    		maxCount = modeMap[el];
+    	}
+    }
+    return maxEl;
 }
 
 if(argv[2] != null && argv[2] !=""){
