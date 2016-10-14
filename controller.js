@@ -1,5 +1,6 @@
 "use strict"
 // write your code here
+import Question from './model.js'
 
 const fs = require('fs');
 const readline = require('readline');
@@ -7,6 +8,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 var i = 0
 var argv = process.argv
 var selected = argv[2]
@@ -14,7 +16,6 @@ var ask = `Silahkan masukkan pertanyaan :\n`
 var answer = `Silahkan masukkan Jawaban :\n`
 var again = `ATTENTION !!!! ======================= Mau lanjut buat pertanyaan atau save? \n(lanjut/save)==============================================================\n`
 var pilihNama = `Silahkan masukan namafile dan sertakan '.json' dibelakangnya.\nJangan menggunakan spasi ! contoh : social.json\n`
-
 var source = []
 var pertanyaan =""
 var jawaban =""
@@ -24,12 +25,7 @@ var right = 0
 var wrong = 0
 var mem = []
 
-class Question{
-  constructor(property){
-    this.definition = property['definition']
-    this.term = property['term']
-  }
-}
+
 function quiz (){
   if(i>content.length-1){
     console.log(`Quiz selesai !`);
@@ -123,7 +119,7 @@ var welcome = `Selamat datang di quiz-cli !\nketik 'quiz' untuk ikut quiz atau '
 
 rl.question(welcome, function(input){
   if(input =='quiz'){
-    console.log(`Silahkan ketik node<spasi>controller.js<spasi>deck`);
+    console.log(`Silahkan ketik babel-node<spasi>controller.js<spasi>deck`);
     console.log(`Deck default : \n1. social.json\n2. math.json`);
     process.exit[0]
     rl.close()
