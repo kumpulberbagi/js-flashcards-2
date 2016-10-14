@@ -4,11 +4,11 @@ export const readline = require('readline');
 import {rl} from './flashcards.js'
 var fs = require('fs');
 
-var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+var data = JSON.parse(fs.readFileSync('user.json', 'utf8'));
 
 
-function writeJson(){
-  var contents = fs.writeFileSync("data.json", JSON.stringify(data));
+function writeUserJson(){
+  var contents = fs.writeFileSync("data3.json", JSON.stringify(data));
 }
 
  export class Question {
@@ -22,12 +22,12 @@ function writeJson(){
     data[data.length-1].definition = quest;
 
 
-    writeJson()
+    writeUserJson()
   }
 
   addAnswer(answer){
     data[data.length-1].term = answer
-    writeJson()
+    writeUserJson()
   }
   jalankan (){
     rl.question(`masukkan pertanyaan\n`, (tanya) => {
