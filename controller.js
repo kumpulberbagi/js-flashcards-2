@@ -10,6 +10,7 @@ export class Game{
     this.data = kumpulanSoal
     this.numSoal = 0;
     this.count = 0;
+    this.countSalah = 0;
   }
 
   driver(soal){
@@ -27,6 +28,7 @@ export class Game{
   questRun(soal){
     if(this.numSoal === this.driver(soal).length){
       console.log(`anda menjawab sebanyak :${this.count}`);
+      console.log(`anda salah sebanyak : ${this.countSalah}`);
       console.log(`Quiz selesai`);
         rl.close();
       }else{
@@ -36,11 +38,12 @@ export class Game{
           console.log(`Jawaban benar`);
           this.numSoal += 1
           this.count +=1
-          this.driver()
+          this.questRun(soal)
           }else{
             console.log(`Jawaban Salah`);
-            this.driver()
-            this.count+=1
+            this.countSalah+=1
+            this.questRun(soal)
+
           }
         });
       }
