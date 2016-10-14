@@ -1,9 +1,9 @@
 "use strict"
 
-export class Interface {
-  static display_welcome(){
-  console.log('============================');
-  console.log('========FLASHCARD===========');
-  console.log('============================');
-}
+export default class View {
+  static welcome() {
+    console.log('                      ============================');
+    console.log('                      Welcome to JS-FlashCARD-02 ');
+    console.log('                      ============================\n');
+  }
 }
