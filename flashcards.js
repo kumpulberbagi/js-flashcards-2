@@ -11,6 +11,7 @@ import {Controller} from "./controller.js"
 // let test = new Interface()
 // let model = new Model()
 let controller = new Controller()
+controller.askCard()
 controller.askQuestion(0)
 // console.log(test.printBoard());
 // console.log(model.readData());

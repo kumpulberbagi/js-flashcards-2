@@ -6,8 +6,9 @@ export class Interface {
 
   }
 
-  static welcome(){
-    console.log(`Welcome to JS Flash Cards. To play, just enter the correct term for each definition. Read? GO !\n`)
+  static welcome(card){
+    console.log(`Welcome to JS Flash Cards. You're using the deck '${card}'`);
+    console.log(`To play, just enter the correct term for each definition. Read? GO !\n`)
   }
 
   static guessAnswer(answer){
