@@ -1,2 +1,4 @@
 "use strict"
-// write your code here
+import Flashcard from './controller.js'
+// Starting the game
+Flashcard.run()
