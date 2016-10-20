@@ -6,6 +6,8 @@ var view = require('./view.js')
 var model = require('./model.js')
 var sci = model.getData('science.json')
 var soc = model.getData('social.json')
+var termkit = require('terminal-kit')
+var term = require('terminal-kit').terminal
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -52,13 +54,13 @@ class Controller {
   }
   check(x){
     if (x == false){
-      console.log("Salah!");
+      term.red('Salah!\n');
       rl.question("Guess: ", (guess) =>{
         this.check(guess.toLowerCase() == model.answer(deck, this.count).toLowerCase())
       })
     }
     if (x){
-      console.log("Benar!\n");
+      term.blue('Benar!\n');
       this.count += 1
       this.loop(this.count)
     }
@@ -69,6 +71,7 @@ class Controller {
   loop(x){
     if (x == deck.length){
       console.log("Udah abis!\nDapet contekan dari mana lu");
+
       rl.close()
     }
     else{
