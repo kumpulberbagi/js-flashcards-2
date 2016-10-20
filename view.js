@@ -20,7 +20,13 @@ module.exports = {
   },
   questions: function(data, count){
     console.log(model.questions(data, count));
+  },
+  end: function(count, array, deck){
+    console.log("Udah abis!\nDapet contekan dari mana lu");
+    console.log(`Anda menebak sebanyak ${count} kali`);
+    for (var i = 0; i < model.getData(deck).length; i++){
+      console.log(`Anda menebak soal ke-${i+1} sebanyak ${array[i]} kali`);
+    }
   }
-
 
 }

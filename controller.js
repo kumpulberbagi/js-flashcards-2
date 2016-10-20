@@ -35,10 +35,18 @@ if (arg == 'science'){
 }else if(arg == 'social'){
   deck = soc
 }
-
+var deckname = ''
+if (arg == 'science'){
+  deckname = 'science.json'
+}else if (arg == 'social'){
+  deckname = 'social.json'
+}
 class Controller {
   constructor(){
     this.count = 0
+    this.counter = 0
+    this.guesses = []
+    this.guess = 1
   }
   start(){
     rl.question("Welcome to js-flash, type go to play\n", (input) =>{
@@ -55,6 +63,8 @@ class Controller {
   check(x){
     if (x == false){
       term.red('Salah!\n');
+      this.counter +=1
+      this.guess += 1
       rl.question("Guess: ", (guess) =>{
         this.check(guess.toLowerCase() == model.answer(deck, this.count).toLowerCase())
       })
@@ -62,6 +72,9 @@ class Controller {
     if (x){
       term.blue('Benar!\n');
       this.count += 1
+      this.counter += 1
+      this.guesses.push(this.guess)
+      this.guess = 1
       this.loop(this.count)
     }
   }
@@ -70,8 +83,7 @@ class Controller {
 
   loop(x){
     if (x == deck.length){
-      console.log("Udah abis!\nDapet contekan dari mana lu");
-
+      view.end(this.counter, this.guesses, deckname)
       rl.close()
     }
     else{
